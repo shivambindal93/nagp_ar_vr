@@ -81,17 +81,18 @@ public class MainActivity extends AppCompatActivity implements
     public void onViewCreated(ArSceneView arSceneView) {
         arFragment.setOnViewCreatedListener(null);
 
-        // Fine adjust the maximum frame rate
         arSceneView.setFrameRateFactor(SceneView.FrameRate.FULL);
 
         // ambient light
-        arSceneView._lightEstimationConfig = LightEstimationConfig.AMBIENT_INTENSITY;
+    //  arSceneView._lightEstimationConfig = LightEstimationConfig.AMBIENT_INTENSITY;
+        arSceneView._lightEstimationConfig = LightEstimationConfig.REALISTIC;
     }
 
     public void loadModels() {
         WeakReference<MainActivity> weakActivity = new WeakReference<>(this);
         ModelRenderable.builder()
-                .setSource(this, Uri.parse("https://storage.googleapis.com/ar-answers-in-search-models/static/GiantPanda/model.glb"))
+            //  .setSource(this, Uri.parse("https://storage.googleapis.com/ar-answers-in-search-models/static/GiantPanda/model.glb"))
+                .setSource(this, Uri.parse("https://storage.googleapis.com/ar-answers-in-search-models/static/Tiger/model.glb"))
                 .setIsFilamentGltf(true)
                 .setAsyncLoadEnabled(true)
                 .build()
@@ -128,12 +129,10 @@ public class MainActivity extends AppCompatActivity implements
             return;
         }
 
-        // Create the Anchor.
         Anchor anchor = hitResult.createAnchor();
         AnchorNode anchorNode = new AnchorNode(anchor);
         anchorNode.setParent(arFragment.getArSceneView().getScene());
 
-        // Create the transformable model and add it to the anchor.
         TransformableNode model = new TransformableNode(arFragment.getTransformationSystem());
         model.setParent(anchorNode);
         model.setRenderable(this.model)

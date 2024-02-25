@@ -6,5 +6,5 @@
     android:gravity="center"
     android:orientation="vertical"
     android:padding="6dp"
-    android:text="Panda"
+    android:text="@string/title"
     android:textAlignment="center" />
