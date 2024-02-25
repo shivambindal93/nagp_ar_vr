@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NAGP A-Frame VR Environment</title>
+    <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+    <script src="./js/play-on-click.js"></script>
+  </head>
+  <body>
+    <a-scene
+      inspector="url: https://cdn.jsdelivr.net/gh/aframevr/aframe-inspector@master/dist/aframe-inspector.min.js"
+    >
+      <a-assets>
+        <a-asset-item id="model" src="./scene.gltf"></a-asset-item>
+        <video
+          id="videoBunny"
+          preload="auto"
+          src="https://cdn.aframe.io/videos/bunny.mp4"
+          autoplay
+          loop="true"
+          crossorigin="anonymous"
+          muted
+        ></video>
+      </a-assets>
+      <a-sky
+        src="beautiful-360-degree-panorama-beach-260nw-284490797.jpg"
+        rotation="0 80 0"
+        position="0 0 -250"
+      ></a-sky>
+      <a-gltf-model
+        src="#model"
+        position="39 -43 -225"
+        rotation="0 190 0"
+      ></a-gltf-model>
+
+      <a-entity
+        id="bunny"
+        material="shader: flat; src: #videoBunny"
+        geometry="primitive: plane; width: 160; height: 90;"
+        position="200 15 -225"
+        rotation="0 -75 0"
+        play-on-click
+      >
+      </a-entity>
+      <a-text
+        value="Click or tap to start video"
+        width="1"
+        position="0.5 1.8 -0.9"
+        rotation="0 -60 3"
+        color="black"
+      ></a-text>
+      <a-entity
+        position="-3 5 -15"
+        rotation="0 0 0"
+        geometry="primitive: box"
+        material="color: red"
+        animation__mouseenter="property: components.material.material.color; type: color; to: blue; startEvents: mouseenter; dur: 500"
+        animation__mouseleave="property: components.material.material.color; type: color; to: red; startEvents: mouseleave; dur: 500"
+      >
+      </a-entity>
+      <a-camera><a-cursor></a-cursor></a-camera>
+      <!-- <a-text
+        value="Click or tap to start video and animation"
+        width="1"
+        position="-0.5 2.3 -1"
+        rotation="0 0 0"
+        color="black"
+      ></a-text> -->
+    </a-scene>
+  </body>
+</html>
