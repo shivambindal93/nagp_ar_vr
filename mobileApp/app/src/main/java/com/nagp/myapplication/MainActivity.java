@@ -84,14 +84,14 @@ public class MainActivity extends AppCompatActivity implements
         arSceneView.setFrameRateFactor(SceneView.FrameRate.FULL);
 
         // ambient light
-    //  arSceneView._lightEstimationConfig = LightEstimationConfig.AMBIENT_INTENSITY;
+        //  arSceneView._lightEstimationConfig = LightEstimationConfig.AMBIENT_INTENSITY;
         arSceneView._lightEstimationConfig = LightEstimationConfig.REALISTIC;
     }
 
     public void loadModels() {
         WeakReference<MainActivity> weakActivity = new WeakReference<>(this);
         ModelRenderable.builder()
-            //  .setSource(this, Uri.parse("https://storage.googleapis.com/ar-answers-in-search-models/static/GiantPanda/model.glb"))
+                //  .setSource(this, Uri.parse("https://storage.googleapis.com/ar-answers-in-search-models/static/GiantPanda/model.glb"))
                 .setSource(this, Uri.parse("https://storage.googleapis.com/ar-answers-in-search-models/static/Tiger/model.glb"))
                 .setIsFilamentGltf(true)
                 .setAsyncLoadEnabled(true)
